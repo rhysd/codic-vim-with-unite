@@ -25,7 +25,7 @@ function! s:source.change_candidates(args, context)
     endif
 
     let dictionary = codic#get_dict_auto(word)
-    let top_items = codic#find_top_words(dictionary, word, get(a:args, 1, 100))
+    let top_items = codic#find_top_words(dictionary, word, get(a:args, 0, 100))
     let candidates = []
     for top_item in top_items
         call add(candidates, { 'word' : '['. top_item.label . ']' })

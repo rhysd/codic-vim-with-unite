@@ -86,7 +86,7 @@ endfunction
 
 function! s:LoadDict(dir, name, mapfn)
   echohl WarningMsg
-  echomsg printf('Condic: loading dict:%s (first time only)', a:name)
+  echomsg printf('Codic: loading dict:%s (first time only)', a:name)
   echohl None
   let entry = s:LoadCSV(globpath(a:dir, a:name . '-entry.csv'))
   let data = s:ToMap(s:LoadCSV(globpath(a:dir, a:name . '-translation.csv')))
