@@ -19,6 +19,15 @@ Or give a word as an argument.
 To close codic result window, just type `<C-W><C-Z>` or `<C-W>z`.  It is a just
 preview window.
 
+In this fork, [unite.vim](https://github.com/Shougo/unite.vim) interface is available.
+
+```
+:Unite codic:検索語
+```
+
+Selecting a candidate inserts the word under the cursor.
+
+
 ## Dictionaries
 
 For latest dictionaries, download archive files from
