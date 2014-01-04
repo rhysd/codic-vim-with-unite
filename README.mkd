@@ -22,6 +22,8 @@ preview window.
 In this fork, [unite.vim](https://github.com/Shougo/unite.vim) interface is available. 
 Execute `:Unite codic` and input a search word to unite interface.  Selecting a candidate inserts the word under the cursor.
 
+![screenshot](http://gifzo.net/BQmwwerDs7w.gif)
+
 ## Dictionaries
 
 For latest dictionaries, download archive files from
