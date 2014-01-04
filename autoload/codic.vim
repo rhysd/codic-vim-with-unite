@@ -31,7 +31,7 @@ function! codic#search(word)
     echohl None
     return -1
   endif
-  let dict = s:GetDictAuto(a:word)
+  let dict = codic#get_dict_auto(a:word)
   if len(dict) == 0
     echohl ErrorMsg
     echomsg 'Codic: dictionaries not found'
@@ -141,7 +141,7 @@ function! s:GetDict(lang)
     return s:dict_{a:lang}
 endfunction
 
-function! s:GetDictAuto(word)
+function! codic#get_dict_auto(word)
   if a:word =~? '^[a-z_]\+$'
     return s:GetDict('english')
   else
@@ -171,7 +171,7 @@ endfunction
 
 function! s:Show(items, word)
   " Open result buffer.
-  let bnum = s:OpenScratch('=Codic-Result=')
+  let bnum = s:OpenScratch('=Codic\ Result=')
   if bnum < 0
     return bnum
   endif
