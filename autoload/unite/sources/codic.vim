@@ -18,15 +18,14 @@ function! s:error_msg(msg)
     echohl None 
 endfunction
 
-function! s:source.gather_candidates(args, context)
-    let word = a:args == [] ? expand('<cword>') : a:args[0]
+function! s:source.change_candidates(args, context)
+    let word = matchstr(a:context.input, '^\S\+')
     if word == ''
-        call s:error_msg('Search word is not specified.')
         return []
     endif
 
     let dictionary = codic#get_dict_auto(word)
-    let top_items = codic#find_top_words(dictionary, word, get(a:args, 2, 100))
+    let top_items = codic#find_top_words(dictionary, word, get(a:args, 1, 100))
     let candidates = []
     for top_item in top_items
         call add(candidates, { 'word' : '['. top_item.label . ']' })
