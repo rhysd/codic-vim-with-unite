@@ -38,7 +38,7 @@ function! codic#search(word)
     echohl None
     return -2
   end
-  let items = s:Find(dict, a:word)
+  let items = codic#find_top_words(dict, a:word, 10)
   if len(items) == 0
     echohl ErrorMsg
     echomsg printf('Codic: cannot find for "%s"', a:word)
@@ -49,7 +49,7 @@ function! codic#search(word)
   if bnum < 0
     echohl ErrorMsg
     echomsg 'Codic: failed to open buffer'
-    echohl ErrorMsg
+    echohl None
     return -4
   endif
 endfunction
@@ -149,7 +149,7 @@ function! s:GetDictAuto(word)
   endif
 endfunction
 
-function! s:Find(dict, word)
+function! codic#find_top_words(dict, word, item_max)
   let items = []
   for [ k, v ] in items(a:dict)
     let score = stridx(k, a:word)
@@ -158,7 +158,7 @@ function! s:Find(dict, word)
     end
   endfor
   call sort(items, 's:Compare')
-  return map(items[0:9], 'v:val["item"]')
+  return map(items[0 : a:item_max], 'v:val["item"]')
 endfunction
 
 function! s:Compare(i1, i2)
@@ -171,7 +171,7 @@ endfunction
 
 function! s:Show(items, word)
   " Open result buffer.
-  let bnum = s:OpenScratch('=Codic Result=')
+  let bnum = s:OpenScratch('=Codic-Result=')
   if bnum < 0
     return bnum
   endif
