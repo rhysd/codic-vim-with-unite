@@ -1,5 +1,7 @@
 # codic vim plugin
 
+This fork is __DEPRECATED__ because [unite-codic.vim](https://github.com/rhysd/unite-codic.vim) is made, which is no longer fork of codic-vim.
+
 A plugin of http://codic.jp/ for Vim.
 
 ## Usage
